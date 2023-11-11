@@ -15,7 +15,7 @@ class Dokumen extends Model
     public function files()
     {
         if ($this->type_upload == 1) {
-            return $this->files ? asset('files/' . $this->files) : asset('storage/files/default.png');
+            return $this->files ? asset('files/' . $this->files) : asset('files/default.png');
         }
         return $this->files;
     }

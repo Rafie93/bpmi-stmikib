@@ -35,6 +35,8 @@ Route::group(['middleware' => 'auth'], function () {
         return view('backend.home.index');
     })->name('home');
 
+    Route::post('/backend/file/upload', [NewsController::class, 'upload'])->name('backend.upload');
+
     Route::get('/backend/news/{key}', [NewsController::class, 'index'])->name('backend.news');
     Route::get('/backend/news/{key}/add', [NewsController::class, 'add'])->name('backend.news.add');
     Route::post('/backend/news/{key}/store', [NewsController::class, 'store'])->name('backend.news.store');

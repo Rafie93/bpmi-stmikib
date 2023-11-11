@@ -100,6 +100,8 @@
     <script src="{{ asset('backend/plugins/daterangepicker/moment.min.js') }}"></script>
     <script src="{{ asset('backend/plugins/daterangepicker/daterangepicker.js') }}"></script>
     <script src="{{ asset('backend/js/sleek.js') }}"></script>
+    <script src="{{ asset('backend/plugins/ckeditor/ckeditor.js') }}"></script>
+    @yield('script')
 </body>
 
 </html>

@@ -41,13 +41,13 @@
                 </li> -->
 
                   <li class="has-sub ">
-                      <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                          data-target="#components" aria-expanded="false" aria-controls="components">
+                      <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#about"
+                          aria-expanded="false" aria-controls="components">
                           <i class="mdi mdi-folder-multiple-outline"></i>
                           <span class="nav-text">About BPMI</span> <b class="caret"></b>
                       </a>
 
-                      <ul class="collapse " id="components" data-parent="#sidebar-menu">
+                      <ul class="collapse " id="about" data-parent="#sidebar-menu">
                           <div class="sub-menu">
                               @foreach (aboutMenu() as $key => $item)
                                   <li><a class="sidenav-item-link" href="/backend/about/{{ $key }}"><span

@@ -3,9 +3,7 @@
     <div class="content">
 
         <div class="breadcrumb-wrapper">
-            <h1>Akreditasi</h1>
-
-
+            <h1>{{ $header }}</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb p-0">
                     <li class="breadcrumb-item">
@@ -24,7 +22,8 @@
 
                 <div class="card card-table-border-none recent-orders" id="recent-orders">
                     <div class="card-header justify-content-between">
-                        <a href="#" class="btn btn-primary btn-default">TAMBAH +</a>
+                        <a href="{{ route('backend.akreditasi.add', $type) }}" class="btn btn-primary btn-default">TAMBAH
+                            +</a>
                     </div>
                     <div class="card-body pt-0 pb-5">
                         <table class="table card-table table-responsive table-responsive-large" style="width:100%">
@@ -32,7 +31,7 @@
                                 <tr>
                                     <th>NO</th>
                                     <th>JUDUL</th>
-                                    <th class="d-none d-lg-table-cell">DESKRIPSI</th>
+                                    <th class="d-none d-lg-table-cell">LINK</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
@@ -44,9 +43,15 @@
                                     <tr>
                                         <td>{{ $no++ }}</td>
                                         <td class="d-none d-lg-table-cell">{{ $row->title }}</td>
-                                        <td class="d-none d-lg-table-cell">{!! $row->description !!}</td>
+                                        <td class="d-none d-lg-table-cell">
+                                            <a href=" {{ $row->files() }}" target="__blank"
+                                                style="color: rgb(0, 123, 255)">LIHAT</a>
+                                        </td>
                                         <td>
-
+                                            <a href="{{ route('backend.akreditasi.edit', [$type, $row->id]) }}"
+                                                class="btn btn-info btn-sm">EDIT</a>
+                                            <a href="{{ route('backend.akreditasi.delete', [$type, $row->id]) }}"
+                                                class="btn btn-danger btn-sm">HAPUS</a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -6,8 +6,11 @@
             <h1>About BPMI</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb p-0">
-
-                    <li class="breadcrumb-item" aria-current="page">Tambah {{ $title ? $title : '' }}</li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('backend.about', $type) }}"
+                            style="color: rgb(0, 162, 255)">{{ $title ? $title : '' }} </a>
+                    </li>
+                    <li class="breadcrumb-item" aria-current="page">Edit {{ $title ? $title : '' }}</li>
                 </ol>
             </nav>
 
@@ -32,7 +35,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInput1">Deskripsi</label>
-                            <textarea name="description" class="form-control" id="" cols="30" rows="10">
+                            <textarea name="description" class="form-control" id="editor" cols="30" rows="10">
                                 {!! $data->description !!}
                             </textarea>
 
@@ -50,4 +53,13 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        CKEDITOR.replace('editor', {
+            height: '200px',
+            filebrowserUploadUrl: "{{ route('backend.upload', ['_token' => csrf_token()]) }}",
+            filebrowserUploadMethod: 'form'
+        });
+    </script>
 @endsection
