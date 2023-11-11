@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\DokumenController as BackendDokumenController;
 use App\Http\Controllers\Backend\MonevController as BackendMonevController;
 use App\Http\Controllers\Backend\AkreditasiController as BackendAkreditasiController;
 use App\Http\Controllers\Backend\NewsController;
+use App\Http\Controllers\Backend\SliderController;
 
 Route::get('/', [BerandaController::class, 'index'])->name('beranda');
 Route::get('/news', [BlogController::class, 'index'])->name('news');
@@ -37,12 +38,19 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/backend/file/upload', [NewsController::class, 'upload'])->name('backend.upload');
 
-    Route::get('/backend/news/{key}', [NewsController::class, 'index'])->name('backend.news');
-    Route::get('/backend/news/{key}/add', [NewsController::class, 'add'])->name('backend.news.add');
-    Route::post('/backend/news/{key}/store', [NewsController::class, 'store'])->name('backend.news.store');
-    Route::get('/backend/news/{key}/edit/{id}', [NewsController::class, 'edit'])->name('backend.news.edit');
-    Route::post('/backend/news/{key}/update/{id}', [NewsController::class, 'update'])->name('backend.news.update');
-    Route::post('/backend/news/{key}/delete/{id}', [NewsController::class, 'delete'])->name('backend.news.delete');
+    Route::get('/backend/news', [NewsController::class, 'index'])->name('backend.news');
+    Route::get('/backend/news/add', [NewsController::class, 'add'])->name('backend.news.add');
+    Route::post('/backend/news/store', [NewsController::class, 'store'])->name('backend.news.store');
+    Route::get('/backend/news/edit/{id}', [NewsController::class, 'edit'])->name('backend.news.edit');
+    Route::post('/backend/news/update/{id}', [NewsController::class, 'update'])->name('backend.news.update');
+    Route::post('/backend/news/delete/{id}', [NewsController::class, 'delete'])->name('backend.news.delete');
+
+    Route::get('/backend/slider', [SliderController::class, 'index'])->name('backend.slider');
+    Route::get('/backend/slider/add', [SliderController::class, 'add'])->name('backend.slider.add');
+    Route::post('/backend/slider/store', [SliderController::class, 'store'])->name('backend.slider.store');
+    Route::get('/backend/slider/edit/{id}', [SliderController::class, 'edit'])->name('backend.slider.edit');
+    Route::post('/backend/slider/update/{id}', [SliderController::class, 'update'])->name('backend.slider.update');
+    Route::post('/backend/slider/delete/{id}', [SliderController::class, 'delete'])->name('backend.slider.delete');
 
     Route::get('/backend/about/{key}', [AboutBpmiController::class, 'index'])->name('backend.about');
     Route::get('/backend/about/{key}/add', [AboutBpmiController::class, 'add'])->name('backend.about.add');

@@ -3,11 +3,79 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
     
+    public function index(Request $request){
+        return view('backend.news.index',[
+            'header' => "Berita",
+            'title' => "Berita",
+            'data' => \App\Models\News::all()
+        ]);
+    }
+
+    public function add(Request $request){
+        return view('backend.news.create',[
+            'title' => "Tambah Berita",
+        ]);
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'title' => 'required',
+            'file' => 'required',
+            'category' => 'required',
+        ]);
+
+        $save = News::create($request->all());
+        if ($request->hasFile('file')) {
+            $originName = $request->file('file')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('file')->getClientOriginalExtension();
+            $fileName = $fileName . '_' . time() . '.' . $extension;
+            $request->file('file')->move('image/news/', $fileName);
+            $save->image = $fileName;
+            $save->save();
+        }
+
+        return redirect()->route('backend.news')->with('success', 'Berita berhasil ditambahkan');
+    }
+    public function edit(Request $request, $id){
+        $data = News::find($id);
+        return view('backend.news.edit',[
+            'title' => "Edit Berita",
+            'data' => $data
+        ]);
+    }
+    public function update(Request $request,$id){
+        $request->validate([
+            'title' => 'required',
+            'category' => 'required',
+        ]);
+
+        $save = News::find($id);
+        $save->update($request->all());
+        if ($request->hasFile('file')) {
+            $originName = $request->file('file')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('file')->getClientOriginalExtension();
+            $fileName = $fileName . '_' . time() . '.' . $extension;
+            $request->file('file')->move('image/news/', $fileName);
+            $save->image = $fileName;
+            $save->save();
+        }
+
+        return redirect()->route('backend.news')->with('success', 'Berita berhasil diubah');
+    }
+
+    public function delete(Request $request, $id){
+        $data = News::find($id);
+        $data->delete();
+        return redirect()->route('backend.news')->with('success', 'Berita berhasil dihapus');
+    }
 
     public function upload(Request $request){
         if ($request->hasFile('upload')) {

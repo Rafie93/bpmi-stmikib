@@ -29,9 +29,17 @@
                   </li>
 
                   <li class="has-sub ">
-                      <a class="sidenav-item-link" href="#">
+                      <a class="sidenav-item-link" href="{{ route('backend.news') }}">
                           <i class="mdi mdi-pencil-box-multiple"></i>
                           <span class="nav-text">Berita</span>
+                      </a>
+
+                  </li>
+
+                  <li class="has-sub ">
+                      <a class="sidenav-item-link" href="{{ route('backend.slider') }}">
+                          <i class="mdi mdi-folder-multiple-outline"></i>
+                          <span class="nav-text">Slider</span>
                       </a>
 
                   </li>
@@ -101,7 +109,8 @@
                       <ul class="collapse" id="tables" data-parent="#sidebar-menu">
                           <div class="sub-menu">
                               @foreach (akreditasiMenu() as $key => $item)
-                                  <li><a class="sidenav-item-link" href="/backend/akreditasi/{{ $key }}"><span
+                                  <li><a class="sidenav-item-link"
+                                          href="/backend/akreditasi/{{ $key }}"><span
                                               class="nav-text">{{ $item }}</span></a></li>
                               @endforeach
                           </div>
