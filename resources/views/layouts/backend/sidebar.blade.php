@@ -20,7 +20,7 @@
               <!-- sidebar menu -->
               <ul class="nav sidebar-inner" id="sidebar-menu">
                   <li class="has-sub ">
-                      <a class="sidenav-item-link" href="#">
+                      <a class="sidenav-item-link" href="{{ route('backend.home') }}">
                           <i class="mdi mdi-view-dashboard-outline"></i>
                           <span class="nav-text">Dashboard</span>
                       </a>
@@ -38,7 +38,7 @@
 
                   <li class="has-sub ">
                       <a class="sidenav-item-link" href="{{ route('backend.slider') }}">
-                          <i class="mdi mdi-folder-multiple-outline"></i>
+                          <i class="mdi mdi-play-box-outline"></i>
                           <span class="nav-text">Slider</span>
                       </a>
 
@@ -68,7 +68,7 @@
                   <li class="has-sub ">
                       <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons"
                           aria-expanded="false" aria-controls="icons">
-                          <i class="mdi mdi-diamond-stone"></i>
+                          <i class="mdi mdi-file-document"></i>
                           <span class="nav-text">Dokumen</span> <b class="caret"></b>
                       </a>
 
@@ -115,6 +115,14 @@
                               @endforeach
                           </div>
                       </ul>
+                  </li>
+
+                  <li class="has-sub ">
+                      <a class="sidenav-item-link" href="{{ route('backend.user') }}">
+                          <i class="mdi mdi-account-edit"></i>
+                          <span class="nav-text">user</span>
+                      </a>
+
                   </li>
 
               </ul>

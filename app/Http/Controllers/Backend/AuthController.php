@@ -25,10 +25,19 @@ class AuthController extends Controller
         ];
 
         if (Auth::Attempt($data)) {
-            return redirect('home');
+            if (Auth::user()->role == 1) {
+                return redirect()->route('backend.home');
+            }else{
+                return redirect()->route('beranda');
+            }
         } else {
             Session::flash('error', 'Email atau Password Salah');
             return redirect()->route('login');
         }
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('beranda');
     }
 }

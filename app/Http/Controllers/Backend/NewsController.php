@@ -10,10 +10,18 @@ class NewsController extends Controller
 {
     
     public function index(Request $request){
+        $data = News::
+                when($request->keyword, function ($query) use ($request) {
+                    $query->where('title', 'like', "%{$request->keyword}%")
+                        ->orWhere('category', 'like', "%{$request->keyword}%");
+                })
+                ->paginate(5)
+                ->withQueryString();
+
         return view('backend.news.index',[
             'header' => "Berita",
             'title' => "Berita",
-            'data' => \App\Models\News::all()
+            'data' => $data
         ]);
     }
 

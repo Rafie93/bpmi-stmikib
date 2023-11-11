@@ -38,7 +38,7 @@
     <main id="main">
 
         <!-- ======= About Section ======= -->
-        <section id="about" class="about">
+        {{-- <section id="about" class="about">
             <div class="container">
 
                 <div class="row content">
@@ -72,7 +72,7 @@
                 </div>
 
             </div>
-        </section><!-- End About Section -->
+        </section> --}}
 
 
         <!-- ======= Services Section ======= -->
@@ -93,7 +93,8 @@
                         <div class="icon-box">
                             <i class="bi bi-card-checklist"></i>
                             <h4><a href="#">Pemantauan Dan Audit Mutu</a></h4>
-                            <p>Lembaga Penjaminan Mutu melaksanakan pemantauan, melaksanakan penilaian, melaksanakan audit
+                            <p>Badan Penjaminan Mutu Internal melaksanakan pemantauan, melaksanakan penilaian, melaksanakan
+                                audit
                                 dan melaksanakan pengendalian mutu di lingkungan akademik</p>
                         </div>
                     </div>

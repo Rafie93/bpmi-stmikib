@@ -17,39 +17,43 @@
 
             </ul>
         </li>
-
-        <li class="dropdown"><a href="#"><span
-                    class=" {{ Request::segment(1) == 'dokumen' ? 'active' : '' }}">Dokumen Digital</span> <i
-                    class="bi
+        @if (auth()->check())
+            <li class="dropdown"><a href="#"><span
+                        class=" {{ Request::segment(1) == 'dokumen' ? 'active' : '' }}">Dokumen Digital</span> <i
+                        class="bi
                     bi-chevron-down"></i></a>
-            <ul>
-                @foreach (dokumenMenu() as $key => $item)
-                    @if ($key == 'spmi')
-                        <li class="dropdown"><a href="#"><span>SPMI</span> <i class="bi bi-chevron-right"></i></a>
-                            <ul>
-                                @foreach (spmiMenu() as $key2 => $item2)
-                                    <li><a href="/dokumen/{{ $key2 }}">{{ $item2 }}</a></li>
-                                @endforeach
+                <ul>
+                    @foreach (dokumenMenu() as $key => $item)
+                        @if ($key == 'spmi')
+                            <li class="dropdown"><a href="#"><span>SPMI</span> <i
+                                        class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    @foreach (spmiMenu() as $key2 => $item2)
+                                        <li><a href="/dokumen/{{ $key2 }}">{{ $item2 }}</a></li>
+                                    @endforeach
 
-                            </ul>
-                        </li>
-                    @else
-                        <li><a href="/dokumen/{{ $key }}">{{ $item }}</a></li>
-                    @endif
-                @endforeach
+                                </ul>
+                            </li>
+                        @else
+                            <li><a href="/dokumen/{{ $key }}">{{ $item }}</a></li>
+                        @endif
+                    @endforeach
 
-            </ul>
-        </li>
-        <li class="dropdown"><a href="#"><span
-                    class=" {{ Request::segment(1) == 'monev' ? 'active' : '' }}">Monev</span> <i
-                    class="bi bi-chevron-down"></i></a>
-            <ul>
-                @foreach (monevMenu() as $key => $item)
-                    <li><a href="/monev/{{ $key }}">{{ $item }}</a></li>
-                @endforeach
+                </ul>
+            </li>
+        @endif
+        @if (auth()->check())
+            <li class="dropdown"><a href="#"><span
+                        class=" {{ Request::segment(1) == 'monev' ? 'active' : '' }}">Monev</span> <i
+                        class="bi bi-chevron-down"></i></a>
+                <ul>
+                    @foreach (monevMenu() as $key => $item)
+                        <li><a href="/monev/{{ $key }}">{{ $item }}</a></li>
+                    @endforeach
 
-            </ul>
-        </li>
+                </ul>
+            </li>
+        @endif
         <li class="dropdown"><a href="#"><span
                     class=" {{ Request::segment(1) == 'akreditasi' ? 'active' : '' }}">Akreditasi</span> <i
                     class="bi bi-chevron-down"></i></a>
@@ -61,7 +65,19 @@
             </ul>
         </li>
 
-        <li><a href="{{ Route('login') }}" class="getstarted">MASUK</a></li>
+
+        @if (auth()->check())
+            <li class="dropdown getstarted"><span>Akun <i class="bi bi-chevron-down"></i></span>
+                <ul>
+                    <li><a href="#">{{ auth()->user()->name }}</a></li>
+                    <li><a href="{{ route('logout') }}">LogOut</a></li>
+                </ul>
+            </li>
+        @else
+            <li>
+                <a href="{{ Route('login') }}" class="getstarted">MASUK</a>
+            </li>
+        @endif
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>
 </nav><!-- .navbar -->

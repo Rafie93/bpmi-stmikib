@@ -35,25 +35,10 @@
                               </div>
                           </li>
 
-                          <li>
-                              <a href="user-profile.html">
-                                  <i class="mdi mdi-account"></i> My Profile
-                              </a>
-                          </li>
-                          <li>
-                              <a href="#">
-                                  <i class="mdi mdi-email"></i> Message
-                              </a>
-                          </li>
-                          <li>
-                              <a href="#"> <i class="mdi mdi-diamond-stone"></i> Projects </a>
-                          </li>
-                          <li class="right-sidebar-in">
-                              <a href="javascript:0"> <i class="mdi mdi-settings"></i> Setting </a>
-                          </li>
+
 
                           <li class="dropdown-footer">
-                              <a href="index.html"> <i class="mdi mdi-logout"></i> Log Out </a>
+                              <a href="{{ route('logout') }}"> <i class="mdi mdi-logout"></i> Log Out </a>
                           </li>
                       </ul>
                   </li>
