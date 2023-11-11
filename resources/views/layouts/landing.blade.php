@@ -46,8 +46,14 @@
         <div class="container d-flex align-items-center">
 
             <!-- Uncomment below if you prefer to use an image logo -->
-            <a href="index.html" class="logo me-auto"><img src="{{ asset('image/logo.png') }}" alt=""
-                    class="img-fluid"></a>
+            <a href="/" class="logo me-auto d-none d-md-block" style="color:dodgerblue">
+                <img src="{{ asset('image/logo.jpg') }}" alt="" class="img-fluid"> BPMI STMIK INDONESIA
+                BANJARMASIN
+            </a>
+
+            <a href="/" class="logo me-auto d-block d-sm-none" style="color:dodgerblue">
+                <img src="{{ asset('image/logo.jpg') }}" alt="" class="img-fluid">
+            </a>
 
             @include('layouts.landing.navbar-landing')
         </div>

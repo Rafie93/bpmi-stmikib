@@ -3,15 +3,9 @@
           <!-- Aplication Brand -->
           <div class="app-brand">
               <a href="/" title="Beranda">
-                  <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="30"
-                      height="33" viewBox="0 0 30 33">
-                      <g fill="none" fill-rule="evenodd">
-                          <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
-                          <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
-                      </g>
-                  </svg>
+                  <img src="{{ asset('image/logo.jpg') }}" alt="" srcset="">
 
-                  <span class="brand-name text-truncate">BPMI Dashboard</span>
+                  <span class="brand-name text-truncate">BPMI</span>
               </a>
           </div>
 
@@ -75,8 +69,22 @@
                       <ul class="collapse " id="icons" data-parent="#sidebar-menu">
                           <div class="sub-menu">
                               @foreach (dokumenMenu() as $key => $item)
-                                  <li><a class="sidenav-item-link" href="/backend/dokumen/{{ $key }}"><span
-                                              class="nav-text">{{ $item }}</span></a></li>
+                                  @if ($key == 'spmi')
+                                      <li class="has-sub"><a href="#"><span>SPMI</span> <i
+                                                  class="bi bi-chevron-right"></i></a>
+                                          <ul>
+                                              @foreach (spmiMenu() as $key2 => $item2)
+                                                  <li><a
+                                                          href="/backend/dokumen/{{ $key2 }}">{{ $item2 }}</a>
+                                                  </li>
+                                              @endforeach
+
+                                          </ul>
+                                      </li>
+                                  @else
+                                      <li><a class="sidenav-item-link" href="/backend/dokumen/{{ $key }}"><span
+                                                  class="nav-text">{{ $item }}</span></a></li>
+                                  @endif
                               @endforeach
                           </div>
                       </ul>
