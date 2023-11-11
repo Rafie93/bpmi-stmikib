@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Lembaga Penjami Mutu STMIK Indonesia Banjarmasin</title>
+    <title>Badan Penjamin Mutu Internal - STMIK IB</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
